@@ -28,5 +28,15 @@ namespace BankAcc
             cc1.display();
 
         }
+
+        private void Accountbtn_Click(object sender, EventArgs e)
+        {
+            Account aa1 = new Account();
+            aa1.setAccno(34544);
+            aa1.setAccty("SAV");
+            aa1.setBal(6758.67);
+            aa1.setcid("987");
+            aa1.display();
+        }
     }
 }
