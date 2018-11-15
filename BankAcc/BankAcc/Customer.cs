@@ -9,7 +9,7 @@ using System.Threading.Tasks;
  * Banp Application 
  * Customer Business Object
  * ****/
-namespace BankApp
+namespace BankAcc
 {
     class Customer
     {
@@ -90,9 +90,15 @@ namespace BankApp
         {
             return CustEmail;
         }
-    }
-}
-public void display()
-{
 
+        public void display()
+        {
+            Console.WriteLine("Customer id = " + getcustid());
+            Console.WriteLine("Customer First Name = " + getcustfn());
+            Console.WriteLine("Customer LAst Name = " + getcustln());
+            Console.WriteLine("Customer Address = " + getcustadd());
+            Console.WriteLine("Customer Email = " + getcustem());
+            Console.WriteLine("Customer Password = " + getcustpw());
+        }
+    }
 }

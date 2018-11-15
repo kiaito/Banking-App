@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,17 @@ namespace BankAcc
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Customerbtn_Click(object sender, EventArgs e)
+        {
+            Customer cc1 = new Customer();
+            cc1.setcustfn("kevin");
+            cc1.setcustln("davis");
+            cc1.setcustadd("georgis");
+            cc1.setcustem("Williy is the heyu");
+            cc1.display();
+
         }
     }
 }
