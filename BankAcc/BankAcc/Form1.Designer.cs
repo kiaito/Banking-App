@@ -34,7 +34,7 @@
             // 
             // Customerbtn
             // 
-            this.Customerbtn.Location = new System.Drawing.Point(0, 0);
+            this.Customerbtn.Location = new System.Drawing.Point(12, 74);
             this.Customerbtn.Name = "Customerbtn";
             this.Customerbtn.Size = new System.Drawing.Size(75, 23);
             this.Customerbtn.TabIndex = 0;
@@ -56,7 +56,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(395, 450);
             this.Controls.Add(this.Accountbtn);
             this.Controls.Add(this.Customerbtn);
             this.Name = "Form1";

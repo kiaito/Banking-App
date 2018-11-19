@@ -20,6 +20,8 @@ namespace BankAcc
         string CustADD;
         string CustEmail;
 
+        
+
         //Constructor set the property values
         public Customer()
         {
@@ -100,5 +102,316 @@ namespace BankAcc
             Console.WriteLine("Customer Email = " + getcustem());
             Console.WriteLine("Customer Password = " + getcustpw());
         }
+
+
+
+        //---------BEHAVIOR---------//
+
+        public System.Data.OleDb.OleDbDataAdapter OleDbDataAdapter2;
+
+        public System.Data.OleDb.OleDbCommand OleDbSelectCommand;
+
+        public System.Data.OleDb.OleDbCommand OleDbInsertCommand;
+
+        public System.Data.OleDb.OleDbCommand OleDbUpdateCommand;
+
+        public System.Data.OleDb.OleDbCommand OleDbDeleteCommand;
+
+        public System.Data.OleDb.OleDbConnection OleDbConnection;
+
+        public string cmd;
+
+        //---------Database Setup -------//
+
+        public void DBSetup()
+        {
+            OleDbDataAdapter2 = new System.Data.OleDb.OleDbDataAdapter();
+
+            OleDbSelectCommand = new System.Data.OleDb.OleDbCommand();
+
+            OleDbInsertCommand = new System.Data.OleDb.OleDbCommand();
+
+            OleDbUpdateCommand = new System.Data.OleDb.OleDbCommand();
+
+            OleDbDeleteCommand = new System.Data.OleDb.OleDbCommand();
+
+            OleDbConnection = new System.Data.OleDb.OleDbConnection();
+
+            OleDbDataAdapter2.DeleteCommand = OleDbDeleteCommand;
+
+            OleDbDataAdapter2.InsertCommand = OleDbInsertCommand;
+
+            OleDbDataAdapter2.SelectCommand = OleDbSelectCommand;
+
+            OleDbDataAdapter2.UpdateCommand = OleDbUpdateCommand;
+
+            OleDbConnection.ConnectionString = "Jet OLEDB:Global Partial Bulk Ops=2;Jet OLEDB:Registry Path=;Jet OLEDB:Database L" +
+
+            "ocking Mode=1;Data Source=c:\\Users\\grob1\\Documents\\ChattBankMDB.mdb;J" +
+
+            "et OLEDB:Engine Type=5;Provider=Microsoft.Jet.OLEDB.4.0;Jet OLEDB:System datab" +
+
+            "ase=;Jet OLEDB:SFP=False;persist security info=False;Extended Properties=;Mode=S" +
+
+            "hare Deny None;Jet OLEDB:Encrypt Database=False;Jet OLEDB:Create System Database=False;Jet " +
+
+            "OLEDB:Don't Copy Locale on Compact=False;Jet OLEDB:Compact Without Replica Repai" +
+
+            "r=False;User ID=Admin;Jet OLEDB:Global Bulk Transactions=1";
+
+        } //end DB setup
+
+
+        //----Select Database Connection-----//
+
+        public void SelectDB(string id)
+
+        {
+
+            DBSetup();
+
+            cmd = "Select * from Customers where CustID = '" + id + "'";
+
+            OleDbDataAdapter2.SelectCommand.CommandText = cmd;
+
+            OleDbDataAdapter2.SelectCommand.Connection = OleDbConnection;
+
+            Console.WriteLine(cmd);
+
+            try
+
+            {
+
+                OleDbConnection.Open();
+
+                System.Data.OleDb.OleDbDataReader dr;
+
+                dr = OleDbDataAdapter2.SelectCommand.ExecuteReader();
+
+
+
+                dr.Read();
+
+                CustID = id;
+
+                setcustpw(dr.GetValue(1) + "");
+
+                setcustfn(dr.GetValue(2) + "");
+
+                setcustln(dr.GetValue(3) + "");
+
+                setcustadd(dr.GetValue(4) + "");
+
+                setcustem(dr.GetValue(5) + "");           
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                OleDbConnection.Close();
+            }
+            //GetList();
+        }
+        // end SelectDB
+        //------Insert Database method-------//
+
+        public void InsertDB()
+
+        {
+
+            DBSetup();
+
+
+
+            cmd = "Insert into Customers values(" + getcustid() + "," + "'" + getcustpw() + "'," + "'" + getcustfn()
+
+                + "'," + "'" + getcustln() + "'," + "'" + getcustadd()
+
+                + "'," + "'" + getcustem() + "')";
+
+            OleDbDataAdapter2.InsertCommand.CommandText = cmd;
+
+            OleDbDataAdapter2.InsertCommand.Connection = OleDbConnection;
+
+            Console.WriteLine(cmd);
+
+            try
+
+            {
+
+                OleDbConnection.Open();
+
+                int n = OleDbDataAdapter2.InsertCommand.ExecuteNonQuery();
+
+                if (n == 1)
+
+                {
+
+                    Console.WriteLine("Data Inserted");
+
+                }
+
+                else
+
+                {
+
+                    Console.WriteLine("Error: Inserting Data");
+
+                }
+
+            }
+
+            catch (Exception ex)
+
+            {
+
+                Console.WriteLine(ex);
+
+            }
+
+            finally
+
+            {
+
+                OleDbConnection.Close();
+
+            }
+
+        } //End InsertDB()
+
+        //------Update into Database-------//
+
+        public void Upddate()
+
+        {
+
+            DBSetup();
+
+            cmd = "Update Customers set CustID ='" + getcustid() + "',"
+
+                + "CustPassword ='" + getcustpw() + "',"
+
+                + "CustFirstName ='" + getcustfn() + "',"
+
+                + "CustLastName ='" + getcustln() + "',"
+
+                + "CustAddress ='" + getcustadd() + "',"
+
+                + " CustEmail ='" + getcustem() + "'"
+
+               + "where CustID ='" + getcustid()+ "'";
+
+
+
+            OleDbDataAdapter2.InsertCommand.CommandText = cmd;
+
+            OleDbDataAdapter2.InsertCommand.Connection = OleDbConnection;
+
+            Console.WriteLine(cmd);
+
+            try
+
+            {
+
+                OleDbConnection.Open();
+
+                int n = OleDbDataAdapter2.InsertCommand.ExecuteNonQuery();
+
+                if (n == 1)
+
+                {
+
+                    Console.WriteLine("Data Updated");
+
+                }
+
+                else
+
+                {
+
+                    Console.WriteLine("Error: Updating Data");
+
+                }
+
+            }
+
+            catch (Exception ex)
+
+            {
+                Console.WriteLine(ex);
+            }
+
+            finally
+            {
+                OleDbConnection.Close();
+
+            }
+
+        } //End UpdateDB()
+
+        //Deleting DadaBase Method
+
+        public void DeleteDB()
+
+        {
+
+            DBSetup();
+
+            cmd = "Delete from Customers where CustID = '" + getcustid() +"'";
+
+
+
+            OleDbDataAdapter2.InsertCommand.CommandText = cmd;
+
+            OleDbDataAdapter2.InsertCommand.Connection = OleDbConnection;
+
+            Console.WriteLine(cmd);
+
+            try
+
+            {
+
+                OleDbConnection.Open();
+
+                int n = OleDbDataAdapter2.InsertCommand.ExecuteNonQuery();
+
+                if (n == 1)
+
+                {
+
+                    Console.WriteLine("Data Deleted");
+
+                }
+
+                else
+
+                {
+
+                    Console.WriteLine("Error: Deleting Data");
+
+                }
+
+            }
+
+            catch (Exception ex)
+
+            {
+
+                Console.WriteLine(ex);
+
+            }
+
+            finally
+
+            {
+
+                OleDbConnection.Close();
+
+            }
+
+        }//End of Delete()
+
     }
 }

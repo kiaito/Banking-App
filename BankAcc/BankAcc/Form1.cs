@@ -20,12 +20,18 @@ namespace BankAcc
 
         private void Customerbtn_Click(object sender, EventArgs e)
         {
-            Customer cc1 = new Customer();
+            Customer cc1 = new Customer("5768", "passwordhh","Kevin","Davisfjjff","Goergis","Goodday@gmail.com");
+             cc1.SelectDB("5768");
+            //cc1.InsertDB();
+            //cc1.Upddate();
+            cc1.DeleteDB();
+            cc1.display();
+            /**
             cc1.setcustfn("kevin");
             cc1.setcustln("davis");
             cc1.setcustadd("georgis");
             cc1.setcustem("Williy is the heyu");
-            cc1.display();
+            cc1.display();**/
 
         }
 
