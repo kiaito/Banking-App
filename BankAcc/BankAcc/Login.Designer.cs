@@ -37,17 +37,18 @@
             // 
             // Sumitbtn
             // 
-            this.Sumitbtn.Location = new System.Drawing.Point(280, 144);
+            this.Sumitbtn.Location = new System.Drawing.Point(258, 181);
             this.Sumitbtn.Name = "Sumitbtn";
             this.Sumitbtn.Size = new System.Drawing.Size(75, 23);
             this.Sumitbtn.TabIndex = 0;
             this.Sumitbtn.Text = "Submit";
             this.Sumitbtn.UseVisualStyleBackColor = true;
+            this.Sumitbtn.Click += new System.EventHandler(this.Sumitbtn_Click);
             // 
             // UserNamelb
             // 
             this.UserNamelb.AutoSize = true;
-            this.UserNamelb.Location = new System.Drawing.Point(188, 86);
+            this.UserNamelb.Location = new System.Drawing.Point(166, 123);
             this.UserNamelb.Name = "UserNamelb";
             this.UserNamelb.Size = new System.Drawing.Size(60, 13);
             this.UserNamelb.TabIndex = 1;
@@ -56,7 +57,7 @@
             // Passwordlb
             // 
             this.Passwordlb.AutoSize = true;
-            this.Passwordlb.Location = new System.Drawing.Point(188, 115);
+            this.Passwordlb.Location = new System.Drawing.Point(166, 152);
             this.Passwordlb.Name = "Passwordlb";
             this.Passwordlb.Size = new System.Drawing.Size(53, 13);
             this.Passwordlb.TabIndex = 2;
@@ -64,14 +65,14 @@
             // 
             // Passwordtb
             // 
-            this.Passwordtb.Location = new System.Drawing.Point(255, 108);
+            this.Passwordtb.Location = new System.Drawing.Point(233, 145);
             this.Passwordtb.Name = "Passwordtb";
             this.Passwordtb.Size = new System.Drawing.Size(100, 20);
             this.Passwordtb.TabIndex = 3;
             // 
             // UserNametb
             // 
-            this.UserNametb.Location = new System.Drawing.Point(255, 79);
+            this.UserNametb.Location = new System.Drawing.Point(233, 116);
             this.UserNametb.Name = "UserNametb";
             this.UserNametb.Size = new System.Drawing.Size(100, 20);
             this.UserNametb.TabIndex = 4;
