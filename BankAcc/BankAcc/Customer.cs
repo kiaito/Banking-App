@@ -11,6 +11,7 @@ using System.Threading.Tasks;
  * ****/
 namespace BankAcc
 {
+    //Declarations
     class Customer
     {
         string CustID;
@@ -19,6 +20,7 @@ namespace BankAcc
         string CustLN;
         string CustADD;
         string CustEmail;
+        AccountList alist = new AccountList();
 
         
 
@@ -101,6 +103,7 @@ namespace BankAcc
             Console.WriteLine("Customer Address = " + getcustadd());
             Console.WriteLine("Customer Email = " + getcustem());
             Console.WriteLine("Customer Password = " + getcustpw());
+            alist.display();
         }
 
 
@@ -212,9 +215,64 @@ namespace BankAcc
             {
                 OleDbConnection.Close();
             }
-            //GetList();
+            GetSchedule();
         }
         // end SelectDB
+
+
+        // getting schedule list
+
+        public void GetSchedule()
+
+        {
+            cmd = "Select AcctNo from Accounts where Cid = '" + CustID + "'";
+
+            OleDbDataAdapter2.SelectCommand.CommandText = cmd;
+
+            OleDbDataAdapter2.SelectCommand.Connection = OleDbConnection;
+
+            Console.WriteLine(cmd);
+
+            string acct = "";
+
+            Account s1 = new Account();
+
+            try
+
+            {
+                OleDbConnection.Open();
+
+                System.Data.OleDb.OleDbDataReader dr;
+
+                dr = OleDbDataAdapter2.SelectCommand.ExecuteReader();
+                while (dr.Read())
+                {
+                   acct = (dr.GetValue(0) + "");
+
+                    s1 = new Account();
+
+                    s1.SelectDB(acct);
+                    
+                    alist.add(s1);
+                }
+            }
+            catch (Exception ex)
+           {
+                Console.WriteLine(ex);
+            }
+
+            finally
+            {
+                OleDbConnection.Close();
+
+            }
+        }
+
+
+
+
+
+
         //------Insert Database method-------//
 
         public void InsertDB()
