@@ -12,11 +12,12 @@ namespace BankAcc
 {
     public partial class Login : Form
     {
+        Customer c1 = new Customer();
         public Login()
         {
             InitializeComponent();
         }
-        AccountDisplay ad;
+        //AccountDisplay ad;
         private void Sumitbtn_Click(object sender, EventArgs e)
         {
             string pw = Passwordtb.Text;
@@ -32,17 +33,18 @@ namespace BankAcc
             {
                 try
                 {
-                    Customer c1 = new Customer();
+                   
                     c1.SelectDB(cid);
                     if (c1.getcustid().Equals(cid) && c1.getcustpw().Equals(pw))
                     {
 
                         Console.WriteLine("forwarding to account display page" + c1.getcustfn());
-                        AccountDisplay ad = new AccountDisplay(cid);
-                        Form1 aaa = new Form1(cid);
-                        aaa.Show();
+                        AccountDisplay ad = new AccountDisplay(c1);
+                      // Form1 aaa = new Form1(c1);
+                        //aaa.Show();
+                        
                         this.Hide();
-                       // ad.Show();
+                       ad.Show();
                     }
                     else
                     {
@@ -55,6 +57,11 @@ namespace BankAcc
                 }
             }
             
+        }
+
+        private void UserNametb_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

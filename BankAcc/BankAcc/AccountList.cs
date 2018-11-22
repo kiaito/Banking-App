@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace BankAcc
 {
    
-    class AccountList
+    public class AccountList
     {
-        int count;
-       Account[] act = new Account[10];
+        public int count;
+       public Account[] act = new Account[10];
         public AccountList()
         {
 

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace BankAcc
 {
     //Declarations
-    class Customer
+    public class Customer
     {
         string CustID;
         string CustPW;
@@ -20,7 +20,7 @@ namespace BankAcc
         string CustLN;
         string CustADD;
         string CustEmail;
-        AccountList alist = new AccountList();
+         public AccountList alists = new AccountList();
 
         
 
@@ -103,7 +103,7 @@ namespace BankAcc
             Console.WriteLine("Customer Address = " + getcustadd());
             Console.WriteLine("Customer Email = " + getcustem());
             Console.WriteLine("Customer Password = " + getcustpw());
-            alist.display();
+            alists.display();
         }
 
 
@@ -253,7 +253,7 @@ namespace BankAcc
 
                     s1.SelectDB(acct);
                     
-                    alist.add(s1);
+                    alists.add(s1);
                 }
             }
             catch (Exception ex)

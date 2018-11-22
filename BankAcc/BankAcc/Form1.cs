@@ -13,13 +13,15 @@ namespace BankAcc
 {
     public partial class Form1 : Form
     {
+        Customer aas;
         public Form1()
         {
             InitializeComponent();
         }
-        public Form1(string ac)
+        public Form1(Customer ac)
         {
-            MessageBox.Show(ac);
+            aas = ac;
+            
 
         }
             private void Customerbtn_Click(object sender, EventArgs e)
