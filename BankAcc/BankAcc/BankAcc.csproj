@@ -54,6 +54,12 @@
       <DependentUpon>AccountDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="AccountList.cs" />
+    <Compile Include="admindisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admindisplay.Designer.cs">
+      <DependentUpon>admindisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +67,13 @@
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="Customer.cs" />
+    <Compile Include="CustomerList.cs" />
+    <Compile Include="Deposit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deposit.Designer.cs">
+      <DependentUpon>Deposit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,11 +88,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Withdrawl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Withdrawl.Designer.cs">
+      <DependentUpon>Withdrawl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AccountDisplay.resx">
       <DependentUpon>AccountDisplay.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="admindisplay.resx">
+      <DependentUpon>admindisplay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deposit.resx">
+      <DependentUpon>Deposit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -96,6 +121,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Withdrawl.resx">
+      <DependentUpon>Withdrawl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -15,47 +15,25 @@ public partial class AccountDisplay : Form
         //string custid;
         Customer aact;
         //= new Customer();
+        string vid = "";
+           
         public AccountDisplay()
         {
             InitializeComponent();
         }
 
             public AccountDisplay(Customer aa)
-        {
+        { 
+
             InitializeComponent();
             aact = aa;
+            vid = aact.getcustid();//for view all accounts button
             Custidtb.Text = aact.getcustid();
             Nametb.Text = aact.getcustfn() + "  " + aact.getcustln();
             Emailtb.Text = aact.getcustem();
 
-            //Setting properties of the list view
-            listViewer.View = View.Details;
-            listViewer.GridLines = true;
-            listViewer.CheckBoxes = false;
-            //setting coloums and headers
-            //listViewer.Columns.Add("Box ", 50);
-            listViewer.Columns.Add("Account Number", 120);
-            listViewer.Columns.Add("Type", 100);
-            listViewer.Columns.Add("Balance", 120);
-
-            //make array for listview
-            string[] item = new string[3];
-            //declare listview items to fill the items
-            ListViewItem lview;
-            int count = aact.alists.count;
-
-            for (int i = 0; i<count; i++)
-            {
-                //adding items
-                item[0] = aact.alists.act[i].getAccno();
-                item[1] = aact.alists.act[i].getAccty();
-                item[2] = aact.alists.act[i].getBal().ToString();
-
-                //placing in list view
-                lview = new ListViewItem(item);
-                listViewer.Items.Add(lview);
-            }
-            listViewer.Visible = false;
+           
+            listViewer.Visible = true;
             //Making all textboxes and labels disappear
             Custidlb.Visible = false;
             textBoxcid.Visible = false;
@@ -70,8 +48,38 @@ public partial class AccountDisplay : Form
             Passwordlb.Visible = false;
             textBoxPw.Visible = false;
             upDatebtn.Visible = false;
-            Depositbtn.Visible = false;
-            Withdrawlbtn.Visible = false;
+            Depositbtn.Visible = true;
+            Withdrawlbtn.Visible = true;
+
+            //Setting properties of the list view
+            listViewer.View = View.Details;
+            listViewer.GridLines = true;
+            listViewer.CheckBoxes = false;
+
+            //setting coloums and headers
+            //listViewer.Columns.Add("Box ", 50);
+            listViewer.Columns.Add("Account Number", 120);
+            listViewer.Columns.Add("Type", 100);
+            listViewer.Columns.Add("Balance", 120);
+
+            //make array for listview
+            string[] item = new string[3];
+            //declare listview items to fill the items
+            ListViewItem lview;
+            int count = aact.alists.count;
+
+            for (int i = 0; i < count; i++)
+            {
+                //adding items
+                item[0] = aact.alists.act[i].getAccno();
+                item[1] = aact.alists.act[i].getAccty();
+                item[2] = aact.alists.act[i].getBal().ToString();
+
+                //placing in list view
+                lview = new ListViewItem(item);
+                listViewer.Items.Add(lview);
+            }
+
         }
 
       
@@ -100,9 +108,36 @@ public partial class AccountDisplay : Form
             Passwordlb.Visible = false;
             textBoxPw.Visible = false;
             upDatebtn.Visible = false;
-            listViewer.Visible = true;
+            
             Depositbtn.Visible = true;
             Withdrawlbtn.Visible = true;
+            listViewer.Visible = true;
+            listViewer.Items.Clear();
+
+            Customer aad = new Customer();
+            aad.SelectDB(vid);
+
+            //make array for listview
+            string[] item = new string[3];
+            //declare listview items to fill the items
+            ListViewItem lview;
+            int count = aad.alists.count;
+
+            for (int i = 0; i < count; i++)
+            {
+                //adding items
+                item[0] = aad.alists.act[i].getAccno();
+                item[1] = aad.alists.act[i].getAccty();
+                item[2] = aad.alists.act[i].getBal().ToString();
+
+                //placing in list view
+                lview = new ListViewItem(item);
+                listViewer.Items.Add(lview);
+            }
+            aact = aad;
+
+            //listViewer.Update();
+            
         }
 
         private void fullnamelb_Click(object sender, EventArgs e)
@@ -114,17 +149,22 @@ public partial class AccountDisplay : Form
 
         private void PersonalInfo_Click(object sender, EventArgs e)
         {
-            listViewer.Hide();
-            Withdrawlbtn.Visible = false;
-            Depositbtn.Visible = false;
+            try
+            {
+                listViewer.Hide();
 
-            //Putting object data into textboxes
-            textBoxPw.Text = aact.getcustpw();
-            textBoxFname.Text = aact.getcustfn();
-            textBoxLname.Text = aact.getcustln();
-            textBoxaddress.Text = aact.getcustadd();
-            textBoxEmail.Text = aact.getcustem();
-            textBoxcid.Text = aact.getcustid();
+                //Putting object data into textboxes
+                textBoxPw.Text = aact.getcustpw();
+                textBoxFname.Text = aact.getcustfn();
+                textBoxLname.Text = aact.getcustln();
+                textBoxaddress.Text = aact.getcustadd();
+                textBoxEmail.Text = aact.getcustem();
+                textBoxcid.Text = aact.getcustid();
+            }
+            catch(Exception ae)
+            {
+                Console.WriteLine(ae);
+            }
 
             // making labels and texboxes visible for editing
             Custidlb.Visible = true;
@@ -148,6 +188,48 @@ public partial class AccountDisplay : Form
         {
             CreateAccount ca = new CreateAccount(aact);
             ca.Show();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Login lg = new Login();
+            this.Hide();
+            lg.Show();
+        }
+
+        private void Depositbtn_Click(object sender, EventArgs e)
+        {
+            Deposit dep = new Deposit();
+            dep.Show();
+        }
+
+        private void Withdrawlbtn_Click(object sender, EventArgs e)
+        {
+            Withdrawl wl = new Withdrawl(aact);
+            wl.Show();
+        }
+
+        private void upDatebtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //setting the object properties to the textboxes
+                aact.setcustpw(textBoxPw.Text);
+                aact.setcustfn(textBoxFname.Text);
+                aact.setcustln(textBoxLname.Text);
+                aact.setcustadd(textBoxaddress.Text);
+                aact.setcustem(textBoxEmail.Text);
+                aact.Upddate();
+                MessageBox.Show("Data Update Successful");
+                Custidtb.Text = aact.getcustid();
+                Nametb.Text = aact.getcustfn() + "  " + aact.getcustln();
+                Emailtb.Text = aact.getcustem();
+
+            }
+            catch(Exception ae)
+            {
+                Console.WriteLine(ae);
+            }
         }
     }
 }

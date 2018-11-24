@@ -22,6 +22,9 @@ namespace BankAcc
         {
             InitializeComponent();
             c1 = cc1;
+            textBoxid.Text = c1.getcustid();
+            
+
 
         }
 
@@ -32,8 +35,26 @@ namespace BankAcc
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {//Create new account button
 
+            if (textBoxid.Text.Equals("") || textBoxAcct.Text.Equals("") || ComboBoxType.Text.Equals("") || textBoxBal.Text.Equals(""))
+            {
+                MessageBox.Show("Please make sure all fields are filled out with the correct information");
+            }
+            else
+            {
+
+                Account actnew = new Account();
+                actnew.setcid(textBoxid.Text);
+                actnew.setAccno(textBoxAcct.Text);
+                actnew.setAccty(ComboBoxType.Text);
+                actnew.setBal(Double.Parse(textBoxBal.Text));
+                actnew.display();
+                actnew.InsertDB();
+                this.Hide();
+                MessageBox.Show("New Account Created Successfully");
+
+            }
         }
 
         private void custidlb_Click(object sender, EventArgs e)

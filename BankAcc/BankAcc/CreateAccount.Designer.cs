@@ -32,10 +32,10 @@
             this.AcctNumberlb = new System.Windows.Forms.Label();
             this.Typelb = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBoxid = new System.Windows.Forms.TextBox();
+            this.textBoxAcct = new System.Windows.Forms.TextBox();
+            this.textBoxBal = new System.Windows.Forms.TextBox();
+            this.ComboBoxType = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Createbtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -81,53 +81,54 @@
             this.label4.Text = "Balance:";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // textBox1
+            // textBoxid
             // 
-            this.textBox1.Location = new System.Drawing.Point(77, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(63, 20);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBoxid.Location = new System.Drawing.Point(77, 32);
+            this.textBoxid.Name = "textBoxid";
+            this.textBoxid.ReadOnly = true;
+            this.textBoxid.Size = new System.Drawing.Size(63, 20);
+            this.textBoxid.TabIndex = 4;
+            this.textBoxid.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // textBoxAcct
             // 
-            this.textBox2.Location = new System.Drawing.Point(77, 72);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(77, 20);
-            this.textBox2.TabIndex = 5;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBoxAcct.Location = new System.Drawing.Point(77, 72);
+            this.textBoxAcct.Name = "textBoxAcct";
+            this.textBoxAcct.Size = new System.Drawing.Size(77, 20);
+            this.textBoxAcct.TabIndex = 5;
+            this.textBoxAcct.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // textBox4
+            // textBoxBal
             // 
-            this.textBox4.Location = new System.Drawing.Point(77, 147);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(77, 20);
-            this.textBox4.TabIndex = 7;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.textBoxBal.Location = new System.Drawing.Point(77, 147);
+            this.textBoxBal.Name = "textBoxBal";
+            this.textBoxBal.Size = new System.Drawing.Size(77, 20);
+            this.textBoxBal.TabIndex = 7;
+            this.textBoxBal.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
-            // comboBox1
+            // ComboBoxType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.ComboBoxType.FormattingEnabled = true;
+            this.ComboBoxType.Items.AddRange(new object[] {
             "MMA",
             "CHK",
             "SAV"});
-            this.comboBox1.Location = new System.Drawing.Point(77, 109);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(63, 21);
-            this.comboBox1.TabIndex = 8;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.ComboBoxType.Location = new System.Drawing.Point(77, 109);
+            this.ComboBoxType.Name = "ComboBoxType";
+            this.ComboBoxType.Size = new System.Drawing.Size(63, 21);
+            this.ComboBoxType.TabIndex = 8;
+            this.ComboBoxType.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.Createbtn);
             this.groupBox1.Controls.Add(this.custidlb);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.textBoxBal);
+            this.groupBox1.Controls.Add(this.ComboBoxType);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.textBoxid);
             this.groupBox1.Controls.Add(this.AcctNumberlb);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBoxAcct);
             this.groupBox1.Controls.Add(this.Typelb);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -166,10 +167,10 @@
         private System.Windows.Forms.Label AcctNumberlb;
         private System.Windows.Forms.Label Typelb;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBoxid;
+        private System.Windows.Forms.TextBox textBoxAcct;
+        private System.Windows.Forms.TextBox textBoxBal;
+        private System.Windows.Forms.ComboBox ComboBoxType;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button Createbtn;
     }

@@ -28,6 +28,9 @@ namespace BankAcc
             if (cid.Equals(adminu) && pw.Equals(adminp))
             {
                 Console.WriteLine("Forwarding to admin page");
+                admindisplay ad = new admindisplay();
+                this.Hide();
+                ad.Show();
             }
             else
             {
@@ -48,7 +51,8 @@ namespace BankAcc
                     }
                     else
                     {
-                        Console.WriteLine("Wrong username and password");
+                        MessageBox.Show("Wrong username and password");
+                        //Console.WriteLine("Wrong username and password");
                     }
                 }
                 catch(Exception ae)

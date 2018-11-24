@@ -21,6 +21,7 @@ namespace BankAcc
         string CustADD;
         string CustEmail;
          public AccountList alists = new AccountList();
+        public CustomerList clists = new CustomerList();
 
         
 
@@ -215,14 +216,15 @@ namespace BankAcc
             {
                 OleDbConnection.Close();
             }
-            GetSchedule();
+            GetAccountlist();
+            GetCustomerlist();
         }
         // end SelectDB
 
 
         // getting schedule list
 
-        public void GetSchedule()
+        public void GetAccountlist()
 
         {
             cmd = "Select AcctNo from Accounts where Cid = '" + CustID + "'";
@@ -266,9 +268,54 @@ namespace BankAcc
                 OleDbConnection.Close();
 
             }
+        }//end get accountlist
+
+
+
+        public void GetCustomerlist()
+
+        {
+            cmd = "Select * from Customers"; 
+            OleDbDataAdapter2.SelectCommand.CommandText = cmd;
+
+            OleDbDataAdapter2.SelectCommand.Connection = OleDbConnection;
+
+            Console.WriteLine(cmd);
+
+            string custid = "";
+
+            Customer s1 = new Customer();
+
+            try
+
+            {
+                OleDbConnection.Open();
+
+                System.Data.OleDb.OleDbDataReader dr;
+
+                dr = OleDbDataAdapter2.SelectCommand.ExecuteReader();
+                while (dr.Read())
+                {
+                    custid = (dr.GetValue(0) + "");
+
+                    s1 = new Customer();
+
+                    s1.SelectDB(custid);
+
+                    clists.add(s1);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            finally
+            {
+                OleDbConnection.Close();
+
+            }
         }
-
-
 
 
 

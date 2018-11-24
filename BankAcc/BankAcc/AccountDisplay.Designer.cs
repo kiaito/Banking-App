@@ -38,6 +38,7 @@
             this.Emailtb = new System.Windows.Forms.TextBox();
             this.Create = new System.Windows.Forms.Button();
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.listViewer = new System.Windows.Forms.ListView();
             this.Depositbtn = new System.Windows.Forms.Button();
             this.Withdrawlbtn = new System.Windows.Forms.Button();
@@ -46,14 +47,14 @@
             this.Fnamelb = new System.Windows.Forms.Label();
             this.Email = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Passwordlb = new System.Windows.Forms.Label();
+            this.textBoxcid = new System.Windows.Forms.TextBox();
+            this.Custidlb = new System.Windows.Forms.Label();
+            this.textBoxPw = new System.Windows.Forms.TextBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.textBoxaddress = new System.Windows.Forms.TextBox();
             this.textBoxLname = new System.Windows.Forms.TextBox();
+            this.Passwordlb = new System.Windows.Forms.Label();
             this.textBoxFname = new System.Windows.Forms.TextBox();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.textBoxPw = new System.Windows.Forms.TextBox();
-            this.Custidlb = new System.Windows.Forms.Label();
-            this.textBoxcid = new System.Windows.Forms.TextBox();
             this.upDatebtn = new System.Windows.Forms.Button();
             this.groupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -146,6 +147,7 @@
             // 
             // groupBox
             // 
+            this.groupBox.Controls.Add(this.label1);
             this.groupBox.Controls.Add(this.PersonalInfo);
             this.groupBox.Controls.Add(this.Create);
             this.groupBox.Controls.Add(this.fullnamelb);
@@ -161,6 +163,16 @@
             this.groupBox.TabIndex = 9;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Customer Details";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(198, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Logout";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // listViewer
             // 
@@ -181,6 +193,7 @@
             this.Depositbtn.Text = "Deposit";
             this.Depositbtn.UseVisualStyleBackColor = true;
             this.Depositbtn.Visible = false;
+            this.Depositbtn.Click += new System.EventHandler(this.Depositbtn_Click);
             // 
             // Withdrawlbtn
             // 
@@ -192,6 +205,7 @@
             this.Withdrawlbtn.Text = "Withdrawl";
             this.Withdrawlbtn.UseVisualStyleBackColor = true;
             this.Withdrawlbtn.Visible = false;
+            this.Withdrawlbtn.Click += new System.EventHandler(this.Withdrawlbtn_Click);
             // 
             // Addresslb
             // 
@@ -254,14 +268,36 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Edit Detail Below";
             // 
-            // Passwordlb
+            // textBoxcid
             // 
-            this.Passwordlb.AutoSize = true;
-            this.Passwordlb.Location = new System.Drawing.Point(215, 28);
-            this.Passwordlb.Name = "Passwordlb";
-            this.Passwordlb.Size = new System.Drawing.Size(56, 13);
-            this.Passwordlb.TabIndex = 14;
-            this.Passwordlb.Text = "Password:";
+            this.textBoxcid.Location = new System.Drawing.Point(72, 21);
+            this.textBoxcid.Name = "textBoxcid";
+            this.textBoxcid.ReadOnly = true;
+            this.textBoxcid.Size = new System.Drawing.Size(100, 20);
+            this.textBoxcid.TabIndex = 18;
+            // 
+            // Custidlb
+            // 
+            this.Custidlb.AutoSize = true;
+            this.Custidlb.Location = new System.Drawing.Point(3, 28);
+            this.Custidlb.Name = "Custidlb";
+            this.Custidlb.Size = new System.Drawing.Size(66, 13);
+            this.Custidlb.TabIndex = 17;
+            this.Custidlb.Text = "Customer Id:";
+            // 
+            // textBoxPw
+            // 
+            this.textBoxPw.Location = new System.Drawing.Point(278, 21);
+            this.textBoxPw.Name = "textBoxPw";
+            this.textBoxPw.Size = new System.Drawing.Size(123, 20);
+            this.textBoxPw.TabIndex = 16;
+            // 
+            // textBoxEmail
+            // 
+            this.textBoxEmail.Location = new System.Drawing.Point(277, 110);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(124, 20);
+            this.textBoxEmail.TabIndex = 15;
             // 
             // textBoxaddress
             // 
@@ -277,43 +313,21 @@
             this.textBoxLname.Size = new System.Drawing.Size(124, 20);
             this.textBoxLname.TabIndex = 10;
             // 
+            // Passwordlb
+            // 
+            this.Passwordlb.AutoSize = true;
+            this.Passwordlb.Location = new System.Drawing.Point(215, 28);
+            this.Passwordlb.Name = "Passwordlb";
+            this.Passwordlb.Size = new System.Drawing.Size(56, 13);
+            this.Passwordlb.TabIndex = 14;
+            this.Passwordlb.Text = "Password:";
+            // 
             // textBoxFname
             // 
             this.textBoxFname.Location = new System.Drawing.Point(72, 64);
             this.textBoxFname.Name = "textBoxFname";
             this.textBoxFname.Size = new System.Drawing.Size(100, 20);
             this.textBoxFname.TabIndex = 11;
-            // 
-            // textBoxEmail
-            // 
-            this.textBoxEmail.Location = new System.Drawing.Point(277, 110);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(124, 20);
-            this.textBoxEmail.TabIndex = 15;
-            // 
-            // textBoxPw
-            // 
-            this.textBoxPw.Location = new System.Drawing.Point(278, 21);
-            this.textBoxPw.Name = "textBoxPw";
-            this.textBoxPw.Size = new System.Drawing.Size(123, 20);
-            this.textBoxPw.TabIndex = 16;
-            // 
-            // Custidlb
-            // 
-            this.Custidlb.AutoSize = true;
-            this.Custidlb.Location = new System.Drawing.Point(3, 28);
-            this.Custidlb.Name = "Custidlb";
-            this.Custidlb.Size = new System.Drawing.Size(66, 13);
-            this.Custidlb.TabIndex = 17;
-            this.Custidlb.Text = "Customer Id:";
-            // 
-            // textBoxcid
-            // 
-            this.textBoxcid.Location = new System.Drawing.Point(72, 21);
-            this.textBoxcid.Name = "textBoxcid";
-            this.textBoxcid.ReadOnly = true;
-            this.textBoxcid.Size = new System.Drawing.Size(100, 20);
-            this.textBoxcid.TabIndex = 18;
             // 
             // upDatebtn
             // 
@@ -324,6 +338,7 @@
             this.upDatebtn.TabIndex = 19;
             this.upDatebtn.Text = "Update Info";
             this.upDatebtn.UseVisualStyleBackColor = true;
+            this.upDatebtn.Click += new System.EventHandler(this.upDatebtn_Click);
             // 
             // AccountDisplay
             // 
@@ -372,5 +387,6 @@
         private System.Windows.Forms.TextBox textBoxaddress;
         private System.Windows.Forms.TextBox textBoxLname;
         private System.Windows.Forms.TextBox textBoxFname;
+        private System.Windows.Forms.Label label1;
     }
 }
