@@ -8,12 +8,10 @@ namespace BankAcc
 {
     public class CustomerList
     {
-
         public int count;
         public Customer[] cct = new Customer[50];
         public CustomerList()
         {
-
         }
         public void add(Customer s)
         {
@@ -21,12 +19,9 @@ namespace BankAcc
             count++;
         }
         public void delsec(Customer s)
-
         {
-
             for (int i = 0; i < cct.Length; i++)
             {
-
                 if (s.getcustid() == cct[i].getcustid())
                 {
                     cct[count] = cct[count - 1];

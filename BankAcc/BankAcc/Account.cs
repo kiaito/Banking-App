@@ -13,7 +13,7 @@ namespace BankAcc
         string Custid;
         string AccTy;
         double Bal;
-        AccountList alist = new AccountList();
+       public  AccountList alist = new AccountList();
 
         //Blank Constructor
         public Account()
@@ -352,5 +352,53 @@ namespace BankAcc
             }
 
         }//End of Delete()
+
+        public void GetAllAccountlist()
+
+        {
+            DBSetup();
+
+            cmd = "Select * from Accounts";
+
+            OleDbDataAdapter2.SelectCommand.CommandText = cmd;
+
+            OleDbDataAdapter2.SelectCommand.Connection = OleDbConnection;
+
+            Console.WriteLine(cmd);
+
+            string acct = "";
+
+            Account s1 = new Account();
+
+            try
+
+            {
+                OleDbConnection.Open();
+
+                System.Data.OleDb.OleDbDataReader dr;
+
+                dr = OleDbDataAdapter2.SelectCommand.ExecuteReader();
+                while (dr.Read())
+                {
+                    acct = (dr.GetValue(0) + "");
+
+                    s1 = new Account();
+
+                    s1.SelectDB(acct);
+
+                    alist.add(s1);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            finally
+            {
+                OleDbConnection.Close();
+
+            }
+        }//end get accountlist
     }
 }

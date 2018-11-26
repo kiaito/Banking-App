@@ -217,7 +217,7 @@ namespace BankAcc
                 OleDbConnection.Close();
             }
             GetAccountlist();
-            GetCustomerlist();
+            //GetCustomerlist();
         }
         // end SelectDB
 
@@ -227,6 +227,7 @@ namespace BankAcc
         public void GetAccountlist()
 
         {
+
             cmd = "Select AcctNo from Accounts where Cid = '" + CustID + "'";
 
             OleDbDataAdapter2.SelectCommand.CommandText = cmd;
@@ -273,36 +274,27 @@ namespace BankAcc
 
 
         public void GetCustomerlist()
-
         {
+            DBSetup();
             cmd = "Select * from Customers"; 
             OleDbDataAdapter2.SelectCommand.CommandText = cmd;
-
             OleDbDataAdapter2.SelectCommand.Connection = OleDbConnection;
-
             Console.WriteLine(cmd);
-
             string custid = "";
-
-            Customer s1 = new Customer();
-
+            // Customer s1 = new Customer();
+            Customer s1;
             try
-
             {
                 OleDbConnection.Open();
-
                 System.Data.OleDb.OleDbDataReader dr;
-
-                dr = OleDbDataAdapter2.SelectCommand.ExecuteReader();
+                dr = OleDbDataAdapter2.SelectCommand.ExecuteReader();            
                 while (dr.Read())
                 {
                     custid = (dr.GetValue(0) + "");
-
                     s1 = new Customer();
-
                     s1.SelectDB(custid);
-
                     clists.add(s1);
+                    Console.WriteLine(s1.getcustfn());                 
                 }
             }
             catch (Exception ex)
@@ -517,6 +509,7 @@ namespace BankAcc
             }
 
         }//End of Delete()
+       
 
     }
 }
