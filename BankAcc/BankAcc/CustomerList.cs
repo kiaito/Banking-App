@@ -6,30 +6,25 @@ using System.Threading.Tasks;
 
 namespace BankAcc
 {
-   
-    public class AccountList
+    public class CustomerList
     {
         public int count;
-       public Account[] act = new Account[50];
-        public AccountList()
+        public Customer[] cct = new Customer[50];
+        public CustomerList()
         {
-
         }
-        public void add(Account s)
+        public void add(Customer s)
         {
-           act[count] = s;
+            cct[count] = s;
             count++;
         }
-        public void delsec(Account s)
-
+        public void delsec(Customer s)
         {
-
-            for (int i = 0; i < act.Length; i++)
+            for (int i = 0; i < cct.Length; i++)
             {
-
-                if (s.getAccno() == act[i].getAccno())
+                if (s.getcustid() == cct[i].getcustid())
                 {
-                    act[count] = act[count - 1];
+                    cct[count] = cct[count - 1];
                 }
             }
             count--;
@@ -39,8 +34,9 @@ namespace BankAcc
             for (int i = 0; i < count; i++)
             {
                 Console.WriteLine("--------------------------");
-                act[i].display();
+                cct[i].display();
             }
         }
+
     }
 }

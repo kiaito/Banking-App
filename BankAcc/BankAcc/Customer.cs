@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace BankAcc
 {
     //Declarations
-    class Customer
+    public class Customer
     {
         string CustID;
         string CustPW;
@@ -20,7 +20,8 @@ namespace BankAcc
         string CustLN;
         string CustADD;
         string CustEmail;
-        AccountList alist = new AccountList();
+         public AccountList alists = new AccountList();
+        public CustomerList clists = new CustomerList();
 
         
 
@@ -103,7 +104,7 @@ namespace BankAcc
             Console.WriteLine("Customer Address = " + getcustadd());
             Console.WriteLine("Customer Email = " + getcustem());
             Console.WriteLine("Customer Password = " + getcustpw());
-            alist.display();
+            alists.display();
         }
 
 
@@ -215,16 +216,18 @@ namespace BankAcc
             {
                 OleDbConnection.Close();
             }
-            GetSchedule();
+            GetAccountlist();
+            //GetCustomerlist();
         }
         // end SelectDB
 
 
         // getting schedule list
 
-        public void GetSchedule()
+        public void GetAccountlist()
 
         {
+
             cmd = "Select AcctNo from Accounts where Cid = '" + CustID + "'";
 
             OleDbDataAdapter2.SelectCommand.CommandText = cmd;
@@ -253,7 +256,7 @@ namespace BankAcc
 
                     s1.SelectDB(acct);
                     
-                    alist.add(s1);
+                    alists.add(s1);
                 }
             }
             catch (Exception ex)
@@ -266,9 +269,45 @@ namespace BankAcc
                 OleDbConnection.Close();
 
             }
+        }//end get accountlist
+
+
+
+        public void GetCustomerlist()
+        {
+            DBSetup();
+            cmd = "Select * from Customers"; 
+            OleDbDataAdapter2.SelectCommand.CommandText = cmd;
+            OleDbDataAdapter2.SelectCommand.Connection = OleDbConnection;
+            Console.WriteLine(cmd);
+            string custid = "";
+            // Customer s1 = new Customer();
+            Customer s1;
+            try
+            {
+                OleDbConnection.Open();
+                System.Data.OleDb.OleDbDataReader dr;
+                dr = OleDbDataAdapter2.SelectCommand.ExecuteReader();            
+                while (dr.Read())
+                {
+                    custid = (dr.GetValue(0) + "");
+                    s1 = new Customer();
+                    s1.SelectDB(custid);
+                    clists.add(s1);
+                    Console.WriteLine(s1.getcustfn());                 
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            finally
+            {
+                OleDbConnection.Close();
+
+            }
         }
-
-
 
 
 
@@ -470,6 +509,7 @@ namespace BankAcc
             }
 
         }//End of Delete()
+       
 
     }
 }
