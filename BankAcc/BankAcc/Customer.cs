@@ -97,7 +97,7 @@ namespace BankAcc
         }
 
         public void display()
-        {
+        {//display method
             Console.WriteLine("Customer id = " + getcustid());
             Console.WriteLine("Customer First Name = " + getcustfn());
             Console.WriteLine("Customer LAst Name = " + getcustln());
@@ -169,9 +169,7 @@ namespace BankAcc
         //----Select Database Connection-----//
 
         public void SelectDB(string id)
-
         {
-
             DBSetup();
 
             cmd = "Select * from Customers where CustID = '" + id + "'";
@@ -181,23 +179,17 @@ namespace BankAcc
             OleDbDataAdapter2.SelectCommand.Connection = OleDbConnection;
 
             Console.WriteLine(cmd);
-
             try
-
             {
-
                 OleDbConnection.Open();
 
                 System.Data.OleDb.OleDbDataReader dr;
 
                 dr = OleDbDataAdapter2.SelectCommand.ExecuteReader();
-
-
-
                 dr.Read();
 
                 CustID = id;
-
+                //setting the properties
                 setcustpw(dr.GetValue(1) + "");
 
                 setcustfn(dr.GetValue(2) + "");
@@ -223,11 +215,8 @@ namespace BankAcc
 
 
         // getting schedule list
-
         public void GetAccountlist()
-
         {
-
             cmd = "Select AcctNo from Accounts where Cid = '" + CustID + "'";
 
             OleDbDataAdapter2.SelectCommand.CommandText = cmd;
@@ -239,9 +228,7 @@ namespace BankAcc
             string acct = "";
 
             Account s1 = new Account();
-
             try
-
             {
                 OleDbConnection.Open();
 
@@ -256,7 +243,7 @@ namespace BankAcc
 
                     s1.SelectDB(acct);
                     
-                    alists.add(s1);
+                    alists.add(s1);//adding to the array list
                 }
             }
             catch (Exception ex)
@@ -274,7 +261,7 @@ namespace BankAcc
 
 
         public void GetCustomerlist()
-        {
+        {//Getting a list of all customers
             DBSetup();
             cmd = "Select * from Customers"; 
             OleDbDataAdapter2.SelectCommand.CommandText = cmd;
@@ -309,20 +296,11 @@ namespace BankAcc
             }
         }
 
-
-
-
         //------Insert Database method-------//
-
         public void InsertDB()
-
         {
-
             DBSetup();
-
-
-
-            cmd = "Insert into Customers values(" + getcustid() + "," + "'" + getcustpw() + "'," + "'" + getcustfn()
+            cmd = "Insert into Customers values('" + getcustid() + "'," + "'" + getcustpw() + "'," + "'" + getcustfn()
 
                 + "'," + "'" + getcustln() + "'," + "'" + getcustadd()
 
@@ -333,59 +311,36 @@ namespace BankAcc
             OleDbDataAdapter2.InsertCommand.Connection = OleDbConnection;
 
             Console.WriteLine(cmd);
-
             try
-
             {
-
                 OleDbConnection.Open();
 
                 int n = OleDbDataAdapter2.InsertCommand.ExecuteNonQuery();
 
                 if (n == 1)
-
                 {
-
                     Console.WriteLine("Data Inserted");
-
                 }
-
                 else
-
                 {
-
                     Console.WriteLine("Error: Inserting Data");
-
                 }
-
             }
-
             catch (Exception ex)
-
             {
-
                 Console.WriteLine(ex);
-
             }
-
             finally
-
             {
-
                 OleDbConnection.Close();
-
             }
-
         } //End InsertDB()
 
         //------Update into Database-------//
 
         public void Upddate()
-
         {
-
             DBSetup();
-
             cmd = "Update Customers set CustID ='" + getcustid() + "',"
 
                 + "CustPassword ='" + getcustpw() + "',"
@@ -400,116 +355,69 @@ namespace BankAcc
 
                + "where CustID ='" + getcustid()+ "'";
 
-
-
             OleDbDataAdapter2.InsertCommand.CommandText = cmd;
 
             OleDbDataAdapter2.InsertCommand.Connection = OleDbConnection;
 
             Console.WriteLine(cmd);
-
             try
-
             {
-
                 OleDbConnection.Open();
-
                 int n = OleDbDataAdapter2.InsertCommand.ExecuteNonQuery();
-
                 if (n == 1)
-
                 {
-
                     Console.WriteLine("Data Updated");
-
                 }
-
                 else
-
                 {
-
                     Console.WriteLine("Error: Updating Data");
-
                 }
-
             }
-
             catch (Exception ex)
-
             {
                 Console.WriteLine(ex);
             }
-
             finally
             {
                 OleDbConnection.Close();
-
             }
 
         } //End UpdateDB()
 
         //Deleting DadaBase Method
-
         public void DeleteDB()
-
         {
-
             DBSetup();
 
             cmd = "Delete from Customers where CustID = '" + getcustid() +"'";
-
-
-
             OleDbDataAdapter2.InsertCommand.CommandText = cmd;
 
             OleDbDataAdapter2.InsertCommand.Connection = OleDbConnection;
 
             Console.WriteLine(cmd);
-
             try
-
             {
-
                 OleDbConnection.Open();
 
                 int n = OleDbDataAdapter2.InsertCommand.ExecuteNonQuery();
 
                 if (n == 1)
-
                 {
-
                     Console.WriteLine("Data Deleted");
-
                 }
-
                 else
-
                 {
-
                     Console.WriteLine("Error: Deleting Data");
-
                 }
-
             }
-
             catch (Exception ex)
-
             {
-
                 Console.WriteLine(ex);
-
             }
-
             finally
-
             {
-
                 OleDbConnection.Close();
-
             }
-
-        }//End of Delete()
-       
-
+        }//End of Delete()      
     }
 }

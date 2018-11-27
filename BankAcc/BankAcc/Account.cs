@@ -136,7 +136,7 @@ namespace BankAcc
 
         public void SelectDB(string an)
 
-        {
+        {// select statement pulling info from account table
 
             DBSetup();
 
@@ -187,7 +187,7 @@ namespace BankAcc
 
         public void InsertDB()
 
-        {
+        {// insert method for insert data
 
             DBSetup();
 
@@ -354,9 +354,10 @@ namespace BankAcc
         }//End of Delete()
 
         public void GetAllAccountlist()
-
+            //Method for getting the liust of accounts
         {
             DBSetup();
+
 
             cmd = "Select * from Accounts";
 

@@ -13,7 +13,7 @@ namespace BankAcc
   
 
     public partial class Withdrawl : Form
-    {
+    {//declarations
         Customer cc1;
         double obal;
         double nbal;
@@ -25,7 +25,7 @@ namespace BankAcc
         }
 
         public Withdrawl(Customer c1)
-        {
+        {//constructor to accept object
             InitializeComponent();
             cc1 = c1;
         }

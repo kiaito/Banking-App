@@ -19,13 +19,13 @@ namespace BankAcc
         }
         //AccountDisplay ad;
         private void Sumitbtn_Click(object sender, EventArgs e)
-        {
+        {//assigning data to var
             string pw = Passwordtb.Text;
             string cid =  UserNametb.Text;
             string adminu = "admin";
             string adminp = "password";
 
-            if (cid.Equals(adminu) && pw.Equals(adminp))
+            if (cid.Equals(adminu) && pw.Equals(adminp))//checking password and id for admin
             {
                 Console.WriteLine("Forwarding to admin page");
                 admindisplay ad = new admindisplay();
@@ -35,9 +35,8 @@ namespace BankAcc
             else
             {
                 try
-                {
-                   
-                    c1.SelectDB(cid);
+                {                  
+                    c1.SelectDB(cid);//checking id and password for customer
                     if (c1.getcustid().Equals(cid) && c1.getcustpw().Equals(pw))
                     {
 
