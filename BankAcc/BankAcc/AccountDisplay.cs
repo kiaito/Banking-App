@@ -23,18 +23,18 @@ public partial class AccountDisplay : Form
         }
 
             public AccountDisplay(Customer aa)
-        { 
+        { //constructor for taking the object
 
             InitializeComponent();
             aact = aa;
             vid = aact.getcustid();//for view all accounts button
+            //setting textbox info
             Custidtb.Text = aact.getcustid();
             Nametb.Text = aact.getcustfn() + "  " + aact.getcustln();
             Emailtb.Text = aact.getcustem();
 
-           
-            listViewer.Visible = true;
             //Making all textboxes and labels disappear
+            listViewer.Visible = true;
             Custidlb.Visible = false;
             textBoxcid.Visible = false;
             textBoxFname.Visible = false;
@@ -86,9 +86,6 @@ public partial class AccountDisplay : Form
 
     private void AccountDisplay_Load(object sender, EventArgs e)
         {
-
-           
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -107,8 +104,7 @@ public partial class AccountDisplay : Form
             textBoxEmail.Visible = false;
             Passwordlb.Visible = false;
             textBoxPw.Visible = false;
-            upDatebtn.Visible = false;
-            
+            upDatebtn.Visible = false;          
             Depositbtn.Visible = true;
             Withdrawlbtn.Visible = true;
             listViewer.Visible = true;
@@ -185,26 +181,26 @@ public partial class AccountDisplay : Form
         }
 
         private void Create_Click(object sender, EventArgs e)
-        {
+        {//forward to create account page
             CreateAccount ca = new CreateAccount(aact);
             ca.Show();
         }
 
         private void label1_Click(object sender, EventArgs e)
-        {
+        {//logout 
             Login lg = new Login();
             this.Hide();
             lg.Show();
         }
 
         private void Depositbtn_Click(object sender, EventArgs e)
-        {
+        {//forward to deposit button 
             Deposit dep = new Deposit();
             dep.Show();
         }
 
         private void Withdrawlbtn_Click(object sender, EventArgs e)
-        {
+        {//forward to withdrawl page
             Withdrawl wl = new Withdrawl(aact);
             wl.Show();
         }

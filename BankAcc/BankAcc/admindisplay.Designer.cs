@@ -31,7 +31,7 @@
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ViewAllAcc = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.deleteaccbtn = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -60,7 +60,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.ViewAllAcc);
-            this.groupBox3.Controls.Add(this.button5);
+            this.groupBox3.Controls.Add(this.deleteaccbtn);
             this.groupBox3.Controls.Add(this.button6);
             this.groupBox3.Location = new System.Drawing.Point(283, 16);
             this.groupBox3.Name = "groupBox3";
@@ -81,16 +81,16 @@
             this.ViewAllAcc.UseVisualStyleBackColor = true;
             this.ViewAllAcc.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // deleteaccbtn
             // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(117, 61);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(107, 34);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Delete";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.deleteaccbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteaccbtn.Location = new System.Drawing.Point(117, 61);
+            this.deleteaccbtn.Name = "deleteaccbtn";
+            this.deleteaccbtn.Size = new System.Drawing.Size(107, 34);
+            this.deleteaccbtn.TabIndex = 2;
+            this.deleteaccbtn.Text = "Delete";
+            this.deleteaccbtn.UseVisualStyleBackColor = true;
+            this.deleteaccbtn.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -136,6 +136,7 @@
             this.Deletebtn.TabIndex = 2;
             this.Deletebtn.Text = "Delete";
             this.Deletebtn.UseVisualStyleBackColor = true;
+            this.Deletebtn.Click += new System.EventHandler(this.Deletebtn_Click);
             // 
             // Createbtn
             // 
@@ -150,11 +151,13 @@
             // 
             // listView
             // 
+            this.listView.FullRowSelect = true;
             this.listView.Location = new System.Drawing.Point(18, 19);
             this.listView.Name = "listView";
             this.listView.Size = new System.Drawing.Size(509, 155);
             this.listView.TabIndex = 11;
             this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -166,9 +169,11 @@
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // listViewAcc
             // 
+            this.listViewAcc.FullRowSelect = true;
             this.listViewAcc.Location = new System.Drawing.Point(18, 27);
             this.listViewAcc.Name = "listViewAcc";
             this.listViewAcc.Size = new System.Drawing.Size(509, 147);
@@ -179,7 +184,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 331);
+            this.ClientSize = new System.Drawing.Size(563, 362);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox);
             this.Name = "admindisplay";
@@ -199,7 +204,7 @@
         private System.Windows.Forms.Button Deletebtn;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button ViewAllAcc;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button deleteaccbtn;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button2;

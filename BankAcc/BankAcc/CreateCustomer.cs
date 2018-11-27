@@ -26,7 +26,7 @@ namespace BankAcc
                 MessageBox.Show("Please make sure all fields are filled out.");
             }
             else
-            {
+            {//setting properties and inserting data
                 Customer ac = new Customer();
                 ac.setcustid(textBoxcid.Text);
                 ac.setcustpw(textBoxPw.Text);
