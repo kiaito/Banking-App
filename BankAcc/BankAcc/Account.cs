@@ -354,7 +354,7 @@ namespace BankAcc
         }//End of Delete()
 
         public void GetAllAccountlist()
-            //Method for getting the liust of accounts
+            //Method for getting the liust of accountskm nb
         {
             DBSetup();
 
