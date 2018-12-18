@@ -1,17 +1,14 @@
-# Banking-App
-Currently building a Banking application using c#.net
+# Chatt Banking Application
+School Project Banking application
+Create an Entire Application that may be used by a ChattBank Customer.
 
-# Project Description: 
-
-## In this project I will create an Entire Application that may be used by a ChattBank Customer.
-
-### There are 2 different types of Users of this System  
+### System Users  
 - Customer 
-- Admin. 
+- Admin
 
 ### The Customer will be able to:
 - Login and view his/her Accounts. 
-- Edit his or her personal information.
+- Update his or her personal information.
 - Create a new Account
 - View balances on each account
 - Withdrawl from any account
@@ -19,4 +16,9 @@ Currently building a Banking application using c#.net
 - Close / Delete any of the accounts
  
 
-The Admin user will login to create new Customer Accounts.
+### The Admin will be able to:
+- Login 
+- View all customers
+- View all accounts 
+_ Create any account
+- Delete any account
