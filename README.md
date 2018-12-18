@@ -18,7 +18,6 @@ Create an Entire Application that may be used by a ChattBank Customer.
 
 ### The Admin will be able to:
 - Login 
-- View all customers
-- View all accounts 
-_ Create any account
-- Delete any account
+- View all customers and accounts
+_ Create delete and update any accounts
+- Create delete and update any customers
